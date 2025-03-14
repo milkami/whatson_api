@@ -150,7 +150,7 @@ class TeamReportView(APIView):
             }, status=201)
 
 
-class AnswerView(APIView):
+class TeamAnswersView(APIView):
     def get(self, request, team_pk, user_pk):
         team = get_object_or_404(CompetitionTeams, pk=team_pk)
         user = get_object_or_404(AppUser, pk=user_pk)
