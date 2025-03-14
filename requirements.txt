@@ -1,0 +1,9 @@
+django
+psycopg2
+gspread
+gspread_formatting
+djangorestframework
+pytz
+whitenoise
+granian
+django-cors-headers
