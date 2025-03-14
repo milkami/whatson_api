@@ -44,7 +44,7 @@ class TeamSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CompetitionTeams
-        fields = ["name", "car_number", "university", "country"]
+        fields = ["id", "name", "car_number", "university", "country"]
 
 
 class UserSerializer(serializers.ModelSerializer):
