@@ -10,6 +10,7 @@ from django.http import JsonResponse
 import json
 
 
+
 class SignupView(APIView):
     def post(self, request):
         serializer = SignupSerializer(data=request.data)
@@ -85,7 +86,7 @@ class StaticEdQuestionsView(generics.ListAPIView):
         return StaticQuestion.objects.filter(category='ED')
 
 
-class TeamReportView(generics.View):
+class TeamReportView(APIView):
 
     def get(self, request, pk, team_pk):
         # Get the user and team objects
@@ -149,7 +150,7 @@ class TeamReportView(generics.View):
             }, status=201)
 
 
-class AnswerView(generics.View):
+class AnswerView(APIView):
     def get(self, request, team_pk, user_pk):
         team = get_object_or_404(CompetitionTeams, pk=team_pk)
         user = get_object_or_404(AppUser, pk=user_pk)
