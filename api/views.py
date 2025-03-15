@@ -148,9 +148,10 @@ class TeamReportView(APIView):
 
 
 class TeamAnswersView(APIView):
-    def get(self, request, team_pk, user_pk):
+    def get(self, request, pk, team_pk):
+        # Get the user and team objects
+        user = get_object_or_404(AppUser, pk=pk)
         team = get_object_or_404(CompetitionTeams, pk=team_pk)
-        user = get_object_or_404(AppUser, pk=user_pk)
 
         # Dohvati sve odgovore za odabrani tim i korisnika
         answers = StaticAnswer.objects.filter(team=team, user=user)
