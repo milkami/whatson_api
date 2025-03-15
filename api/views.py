@@ -184,10 +184,10 @@ class TeamAnswersView(APIView):
     #         }
     #     ]
     # }
-    def post(self, request, team_pk, user_pk):
+    def post(self, request, pk, team_pk):
         data = json.loads(request.body)
+        user = get_object_or_404(AppUser, pk=pk)
         team = get_object_or_404(CompetitionTeams, pk=team_pk)
-        user = get_object_or_404(AppUser, pk=user_pk)
 
         # Loop through the submitted answers and update them
         for answer_data in data.get('answers', []):
