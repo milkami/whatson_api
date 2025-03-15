@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.utils.timezone import now
 
 
 class AccountsCustomuserManager(BaseUserManager):
@@ -93,14 +94,14 @@ class AppUser(models.Model):
     password = models.CharField(max_length=128)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
-    date_joined = models.DateTimeField()
-    is_active = models.BooleanField()
-    bpp = models.BooleanField()
-    cm = models.BooleanField()
-    dynamics = models.BooleanField()
-    ed = models.BooleanField()
-    scrutineering = models.BooleanField()
-    statics = models.BooleanField()
+    date_joined = models.DateTimeField(default=now)
+    is_active = models.BooleanField(default=False)
+    bpp = models.BooleanField(default=False)
+    cm = models.BooleanField(default=False)
+    dynamics = models.BooleanField(default=False)
+    ed = models.BooleanField(default=False)
+    scrutineering = models.BooleanField(default=False)
+    statics = models.BooleanField(default=False)
 
     class Meta:
         # managed = False

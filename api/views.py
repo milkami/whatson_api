@@ -10,13 +10,11 @@ from django.http import JsonResponse
 import json
 
 
-
 class SignupView(APIView):
     def post(self, request):
         serializer = SignupSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            user = serializer.validated_data['user']
+            user = serializer.save()
             return Response({
                 'id': user.id,
                 'name': user.username,
@@ -27,7 +25,6 @@ class SignupView(APIView):
                 'bpp': user.bpp,
                 'cm': user.cm,
                 'ed': user.ed
-
             }, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
